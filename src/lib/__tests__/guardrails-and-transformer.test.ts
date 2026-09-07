@@ -6,7 +6,6 @@ import {
 import {
   validateCustomizations,
   validateCustomizationsWithMapping,
-  doctrinalDenylist,
 } from '../guardrails';
 import { transformStory } from '../transformer';
 import type { BibleStory } from '../../types';
@@ -16,9 +15,6 @@ const davidStory = storiesCatalog.find(
 ) as BibleStory;
 const prodigalStory = storiesCatalog.find(
   (s) => s.id === 'the-prodigal-son'
-) as BibleStory;
-const danielStory = storiesCatalog.find(
-  (s) => s.id === 'daniel-lions-den'
 ) as BibleStory;
 
 describe('validateCustomizations', () => {

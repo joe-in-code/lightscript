@@ -136,7 +136,7 @@ function checkSymbolicIntegrity(
 
   const replacementMeaning = mapping[replacementLower];
   if (!replacementMeaning) {
-    for (const [key, meaning] of Object.entries(mapping)) {
+    for (const key of Object.keys(mapping)) {
       if (key === originalLower) continue;
       if (
         key.toLowerCase().includes(replacementLower) ||
