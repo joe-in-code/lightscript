@@ -1,6 +1,10 @@
 import { NextResponse } from 'next/server';
-import { storiesCatalog, customizationSchema } from '../../../data/stories';
-import { validateCustomizations } from '../../../lib/guardrails';
+import {
+  storiesCatalog,
+  customizationSchema,
+  symbolTheologyMapping,
+} from '../../../data/stories';
+import { validateCustomizationsWithMapping } from '../../../lib/guardrails';
 import { transformStory } from '../../../lib/transformer';
 import type { BibleStory } from '../../../types';
 
@@ -42,10 +46,11 @@ export async function POST(request: Request) {
     );
   }
 
-  const validation = validateCustomizations(
+  const validation = validateCustomizationsWithMapping(
     customizations,
     story,
-    customizationSchema
+    customizationSchema,
+    symbolTheologyMapping
   );
 
   if (!validation.valid) {
